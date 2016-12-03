@@ -8,10 +8,10 @@ public interface IAirplane extends IVehicle {
      */
     int getMaximumHeightFeet();
 
+
     /**
      * Set airplane maximum height
      * @param maximumHeightFeet maximum height of the airplane
      */
     void setMaximumHeightFeet(int maximumHeightFeet);
-
 }
