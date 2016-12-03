@@ -4,54 +4,68 @@ package school.lemon.changerequest.java.extendedinteger;
  * Integer representation with some additional features
  */
 public class ExtendedInteger {
+    private int value;
 
     public ExtendedInteger(int value) {
-        //TODO: implement me
     }
 
     /**
      * Check whether specified value is even
+     *
      * @param value to check
      * @return true if value is even, false - otherwise
      */
     public static boolean isEven(int value) {
-        //TODO: implement me
+        if (value % 2 == 0) {
+            return true;
+        }
         return false;
+
     }
 
     /**
      * Check whether specified value is odd
+     *
      * @param value to check
      * @return true if value is odd, false - otherwise
      */
     public static boolean isOdd(int value) {
-        //TODO: implement me
+        if (value % 2 != 0) {
+            return true;
+        }
         return false;
     }
 
     /**
      * Check whether specified value is prime
+     *
      * @param value to check
      * @return true if value is prime, false - otherwise
      */
     public static boolean isPrime(int value) {
-        //TODO: implement me
-        return false;
+        if (value < 2)
+            return false;
+        for (int i = 2; i*i<= value; i++) {
+            if (value % i == 0)
+                return false;
+        }
+        return true;
     }
 
     /**
      * Parse specified char array and create instance of {@code ExtendedInteger}
+     *
      * @param value to parse
      * @return instance of {@code ExtendedInteger} or
      * null in case specified value is null or the value does not contain a parsable integer
      */
     public static ExtendedInteger parseInt(char[] value) {
-        //TODO: implement me
         return null;
     }
 
     /**
      * Parse specified string and create instance of {@code ExtendedInteger}
+     *
      * @param value to parse
      * @return instance of {@code ExtendedInteger} or
      * null in case specified value is null or the value does not contain a parsable integer
@@ -61,59 +75,74 @@ public class ExtendedInteger {
         return null;
     }
 
+
     /**
      * Get int representation of {@code ExtendedInteger}
+     *
      * @return int representation
      */
     public int getValue() {
-        //TODO: implement me
-        return 0;
+        return value;
     }
 
     /**
      * Check whether current value is even
+     *
      * @return true if value is even, false - otherwise
      */
     public boolean isEven() {
-        //TODO: implement me
+        if (isEven(value)) {
+            return true;
+        }
         return false;
     }
 
     /**
      * Check whether current value is odd
+     *
      * @return true if value is odd, false - otherwise
      */
     public boolean isOdd() {
-        //TODO: implement me
+        if (isOdd(value)) {
+            return true;
+        }
         return false;
     }
 
     /**
      * Check whether current value is prime
+     *
      * @return true if value is prime, false - otherwise
      */
     public boolean isPrime() {
-        //TODO: implement me
+        if (isPrime(value))
+            return true;
         return false;
     }
 
     /**
      * Check whether current {@code ExtendedInteger} is equal to specified int value
+     *
      * @return true if values are equal, false - otherwise
      */
     public boolean equals(int value) {
-        //TODO: implement me
+        if (this.value == getValue()) {
+            return true;
+        }
         return false;
     }
 
     /**
      * Check whether current {@code ExtendedInteger} is equal to specified object
+     *
      * @return true if values are equal, false - otherwise
      */
     @Override
     public boolean equals(Object obj) {
-        //TODO: implement me
-        return false;
+        if (obj instanceof ExtendedInteger) {
+            ExtendedInteger extendedInteger = (ExtendedInteger) obj;
+            return true;
+        } else return false;
     }
 
 }
