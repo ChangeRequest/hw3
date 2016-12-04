@@ -9,7 +9,7 @@ public class Airplane implements IAirplane {
     private String model;
     private int maximumHeightFeet;
 
-    private Airplane(int manufacturedYear, String make, String model, int maximumHeightFeet) {
+    public Airplane(int manufacturedYear, String make, String model, int maximumHeightFeet) {
         this.manufacturedYear = manufacturedYear;
         this.make = make;
         this.model = model;
