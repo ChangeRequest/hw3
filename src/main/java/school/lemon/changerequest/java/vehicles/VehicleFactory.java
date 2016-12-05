@@ -15,7 +15,7 @@ public final class VehicleFactory {
      * @return instance of car
      */
     public static ICar createCar(int manufacturedYear, String make, String model, int horsepower) {
-        return null;
+        return new Car(manufacturedYear, make, model, horsepower);
     }
 
     /**
@@ -27,8 +27,8 @@ public final class VehicleFactory {
      * @param maximumHeightFeet of airplane
      * @return instance of airplane
      */
-    public static IAirplane createAirplane(int manufacturedYear, String make, String model, int maximumHeightFeet) {;
-        return;
+    public static IAirplane createAirplane(int manufacturedYear, String make, String model, int maximumHeightFeet) {
+        return new Airplane(manufacturedYear, make, model, maximumHeightFeet);
     }
 
     /**
@@ -41,8 +41,7 @@ public final class VehicleFactory {
      * @return instance of boat
      */
     public static IBoat createBoat(int manufacturedYear, String make, String model, boolean motorized) {
-        // TODO: please implement me
-        return null;
+        return new Boat(manufacturedYear, make, model, motorized);
     }
 
 
