@@ -3,27 +3,24 @@ package school.lemon.changerequest.java.vehicles;
 /**
  * Created by Yaroslav Pavlinskiy on 02.12.2016.
  */
-public class Boat implements IBoat {
-    private int manufacturedYears;
-    private String make;
-    private String model;
+public class Boat extends Vehicle implements IBoat {
+
     private boolean motorized;
 
-    public Boat(int manufacturedYears, String make, String model, boolean motorized) {
-        this.manufacturedYears = manufacturedYears;
-        this.make = make;
-        this.model = model;
+    public Boat(int manufacturedYear, String make, String model, boolean motorized) {
+        super(manufacturedYear, make, model);
         this.motorized = motorized;
     }
 
+
     @Override
     public int getManufacturedYear() {
-        return this.manufacturedYears;
+        return this.manufacturedYear;
     }
 
     @Override
     public void setManufacturedYear(int year) {
-        this.manufacturedYears = year;
+        this.manufacturedYear = year;
     }
 
     @Override
@@ -80,8 +77,14 @@ public class Boat implements IBoat {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        if (this == obj)
+            return true;
+        if (!(obj instanceof Boat))
+            return false;
         obj = (Boat) obj;
-        if (this.toString() == obj.toString())
+        if (((Boat) obj).isMotorized() == this.isMotorized())
             return true;
         return false;
     }

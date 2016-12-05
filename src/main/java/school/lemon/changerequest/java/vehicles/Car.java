@@ -3,18 +3,15 @@ package school.lemon.changerequest.java.vehicles;
 /**
  * Created by Yaroslav Pavlinskiy on 02.12.2016.
  */
-public class Car implements ICar {
-    private int manufacturedYears;
-    private String make;
-    private String model;
+public class Car extends Vehicle implements ICar {
+
     private int horespower;
 
-    public Car(int manufacturedYears, String make, String model, int horespower) {
-        this.manufacturedYears = manufacturedYears;
-        this.make = make;
-        this.model = model;
+    public Car(int manufacturedYear, String make, String model, int horespower) {
+        super(manufacturedYear, make, model);
         this.horespower = horespower;
     }
+
 
     @Override
     public int getHorsepower() {
@@ -28,12 +25,12 @@ public class Car implements ICar {
 
     @Override
     public int getManufacturedYear() {
-        return this.manufacturedYears;
+        return this.manufacturedYear;
     }
 
     @Override
     public void setManufacturedYear(int year) {
-        this.manufacturedYears = year;
+        this.manufacturedYear = year;
     }
 
     @Override
@@ -78,12 +75,13 @@ public class Car implements ICar {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof Boat)
-            obj = (Car) obj;
         if (obj == null)
             return false;
         if (this == obj)
             return true;
+        if (!(obj instanceof Car))
+            return false;
+        obj = (Car) obj;
         if (this.getHorsepower() + 10 != ((Car) obj).getHorsepower() || this.getHorsepower() - 10 != ((Car) obj).getHorsepower())
             return true;
         return false;

@@ -3,18 +3,14 @@ package school.lemon.changerequest.java.vehicles;
 /**
  * Created by Yaroslav Pavlinskiy on 04.12.2016.
  */
-public class Airplane implements IAirplane {
-    private int manufacturedYear;
-    private String make;
-    private String model;
+public class Airplane extends Vehicle implements IAirplane {
     private int maximumHeightFeet;
 
     public Airplane(int manufacturedYear, String make, String model, int maximumHeightFeet) {
-        this.manufacturedYear = manufacturedYear;
-        this.make = make;
-        this.model = model;
+        super(manufacturedYear, make, model);
         this.maximumHeightFeet = maximumHeightFeet;
     }
+
 
     @Override
     public int getManufacturedYear() {
@@ -78,13 +74,9 @@ public class Airplane implements IAirplane {
 
     @Override
     public boolean equals(Object obj) {
-        obj = (Airplane) obj;
-        if (obj == null)
+        if (!(obj instanceof Airplane))
             return false;
-        if (this == obj)
-            return true;
-        if (this.getMaximumHeightFeet() + 1000 != ((Airplane) obj).getMaximumHeightFeet() || this.getMaximumHeightFeet() - 1000 != ((Airplane) obj).getMaximumHeightFeet())
-            return true;
-        return false;
+        Airplane enotherAirplane = (Airplane) obj;
+        return enotherAirplane.getMaximumHeightFeet() == this.getMaximumHeightFeet() + 500 && enotherAirplane.getMaximumHeightFeet() == this.getMaximumHeightFeet() - 500;
     }
 }
