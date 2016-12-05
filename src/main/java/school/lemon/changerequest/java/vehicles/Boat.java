@@ -84,9 +84,10 @@ public class Boat extends Vehicle implements IBoat {
         if (!(obj instanceof Boat))
             return false;
         obj = (Boat) obj;
-        if (((Boat) obj).isMotorized() == this.isMotorized())
+        if (this.motorized != ((Boat) obj).motorized)
+            return false;
+        else
             return true;
-        return false;
     }
 
     public int compareTo(Object obj) {

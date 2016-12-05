@@ -74,9 +74,15 @@ public class Airplane extends Vehicle implements IAirplane {
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        if (this == obj)
+            return true;
         if (!(obj instanceof Airplane))
             return false;
-        Airplane enotherAirplane = (Airplane) obj;
-        return enotherAirplane.getMaximumHeightFeet() == this.getMaximumHeightFeet() + 500 && enotherAirplane.getMaximumHeightFeet() == this.getMaximumHeightFeet() - 500;
+        obj = (Airplane) obj;
+        if (this.getMaximumHeightFeet() + 1000 > ((Airplane) obj).getMaximumHeightFeet() || this.getMaximumHeightFeet() - 1000 < ((Airplane) obj).getMaximumHeightFeet())
+            return true;
+        return false;
     }
 }
