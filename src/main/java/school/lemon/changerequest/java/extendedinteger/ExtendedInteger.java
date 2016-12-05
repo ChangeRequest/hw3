@@ -97,7 +97,7 @@ public class ExtendedInteger {
      * @return true if value is even, false - otherwise
      */
     public boolean isEven() {
-        return this.value % 2 == 0;
+        return isEven(this.value);
     }
 
     /**
@@ -106,7 +106,7 @@ public class ExtendedInteger {
      * @return true if value is odd, false - otherwise
      */
     public boolean isOdd() {
-        return this.value % 2 != 0;
+        return isOdd(this.value);
     }
 
     /**
@@ -115,12 +115,7 @@ public class ExtendedInteger {
      * @return true if value is prime, false - otherwise
      */
     public boolean isPrime() {
-        if (this.value < 2)
-            return false;
-        for (int i = 2; i * i <= this.value; i++)
-            if (this.value % i == 0)
-                return false;
-        return true;
+        return isPrime(this.value);
     }
 
     /**
