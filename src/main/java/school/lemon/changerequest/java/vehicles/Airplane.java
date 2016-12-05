@@ -73,9 +73,7 @@ public class Airplane implements IAirplane {
 
     @Override
     public String toString() {
-        return "This airplane is a " + getManufacturedYear() + " " + this.getMake() + " " + this.getModel() + " that can reach " +
-                this.getMaximumHeightFeet() + " feet.";
-
+        return String.format("This airplane is a %1$d %2$s %3$s that can reach %4$d feet.", this.getManufacturedYear(), this.getMake(), this.getModel(), this.getMaximumHeightFeet());
     }
 
     @Override

@@ -73,7 +73,7 @@ public class Car implements ICar {
 
     @Override
     public String toString() {
-        return "This car is a " + this.getManufacturedYear() + " " + this.getMake() + " " + this.getModel() + " with " + this.getHorsepower() + " hp.";
+        return String.format("This car is a %1$s %2$s %3$s with %4$s hp.", this.getManufacturedYear(), this.getMake(), this.getModel(), this.getHorsepower());
     }
 
     @Override

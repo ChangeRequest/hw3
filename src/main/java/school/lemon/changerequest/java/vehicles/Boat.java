@@ -74,8 +74,8 @@ public class Boat implements IBoat {
     @Override
     public String toString() {
         if (this.motorized)
-            return "This boat is a " + this.getManufacturedYear() + " " + this.getMake() + " " + this.getModel() + " (with motor).";
-        return "This boat is a " + this.getManufacturedYear() + " " + this.getMake() + " " + this.getModel() + ".";
+            return String.format("This boat is a %1$s %2$s %3$s (with motor).", this.getManufacturedYear(), this.getMake(), this.getModel());
+        return String.format("This boat is a %1$s %2$s %3$s.", this.getManufacturedYear(), this.getMake(), this.getModel());
     }
 
     @Override
