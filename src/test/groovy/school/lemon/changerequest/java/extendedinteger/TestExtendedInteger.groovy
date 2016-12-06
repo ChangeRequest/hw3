@@ -64,7 +64,7 @@ class TestExtendedInteger extends Specification {
         "0"          | 0
         "1"          | 1
         "12"         | 12
-        "123"        | 123
+        "+123"       | 123
     }
 
     @Unroll
@@ -80,7 +80,7 @@ class TestExtendedInteger extends Specification {
         "0"          | 0
         "1"          | 1
         "12"         | 12
-        "123"        | 123
+        "+123"       | 123
     }
 
     @Unroll
@@ -139,35 +139,39 @@ class TestExtendedInteger extends Specification {
     }
 
     @Unroll
-    def "Is equals to int #value"() {
-        given:
-        def extendedInteger = new ExtendedInteger(10)
-
+    def "equals should return #expectedResult for #extendedInteger and #intValue"() {
         expect:
-        extendedInteger.equals(value) == isEquals
+        extendedInteger.equals(intValue) == expectedResult
 
         where:
-        value | isEquals
-        -1    | false
-        0     | false
-        10    | true
+        extendedInteger          | intValue || expectedResult
+        new ExtendedInteger(10)  | -1       || false
+        new ExtendedInteger(9)   | 0        || false
+        new ExtendedInteger(13)  | 13       || true
+        new ExtendedInteger(13)  | 17       || false
+        new ExtendedInteger(-7)  | 0        || false
+        new ExtendedInteger(-10) | 10       || false
+        new ExtendedInteger(-3)  | -3       || true
+        new ExtendedInteger(0)   | 0        || true
     }
 
     @Unroll
-    def "Is equals to ExtendedInteger #value"() {
-        given:
-        def extendedInteger = new ExtendedInteger(10)
-
+    def "equals should return #expectedResult for #ei1 and #ei2"() {
         expect:
-        extendedInteger.equals(value) == isEquals
-
+        ei1.equals(ei2) == expectedResult
         where:
-        value                   | isEquals
-        new ExtendedInteger(-1) | false
-        new ExtendedInteger(0)  | false
-        new ExtendedInteger(10) | true
-        null                    | false
-        new Object()            | false
+
+        ei1                      | ei2                     || expectedResult
+        new ExtendedInteger(10)  | new ExtendedInteger(-1) || false
+        new ExtendedInteger(9)   | new ExtendedInteger(0)  || false
+        new ExtendedInteger(13)  | new ExtendedInteger(13) || true
+        new ExtendedInteger(13)  | new ExtendedInteger(17) || false
+        new ExtendedInteger(23)  | null                    || false
+        new ExtendedInteger(-27) | new Object()            || false
+        new ExtendedInteger(-7)  | new ExtendedInteger(0)  || false
+        new ExtendedInteger(-10) | new ExtendedInteger(10) || false
+        new ExtendedInteger(-3)  | new ExtendedInteger(-3) || true
+        new ExtendedInteger(0)   | new ExtendedInteger(0)  || true
     }
 
     @Unroll
@@ -176,12 +180,7 @@ class TestExtendedInteger extends Specification {
         ExtendedInteger.parseInt(valueToParse.toCharArray()) == null
 
         where:
-        valueToParse | _
-        "-12.3"      | _
-        "-12a"       | _
-        "a-1"        | _
-        "asd"        | _
-        ""           | _
+        valueToParse << ["-12.3", "-12a", "a-1", "asd", "", "s123"]
     }
 
     @Unroll
@@ -190,11 +189,6 @@ class TestExtendedInteger extends Specification {
         ExtendedInteger.parseInt(valueToParse) == null
 
         where:
-        valueToParse | _
-        "-12.3"      | _
-        "-12a"       | _
-        "a-1"        | _
-        "asd"        | _
-        ""           | _
+        valueToParse << ["-12.3", "-12a", "a-1", "asd", "", "s123"]
     }
 }
