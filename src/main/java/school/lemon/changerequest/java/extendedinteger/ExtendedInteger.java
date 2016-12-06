@@ -35,9 +35,16 @@ public class ExtendedInteger {
         if (value == null || value.length == 0) return null;
         String newValue = new String(value);
         StringBuilder str = new StringBuilder();
-        if (Character.isDigit(newValue.charAt(0)) || newValue.startsWith("-")) {
+//        switch (newValue.charAt(0){
+//            case (newValue.startsWith("-")):
+//        }
+        if (Character.isDigit(newValue.charAt(0)) || newValue.startsWith("-") || newValue.startsWith("+")) {
             str = str.append(newValue.charAt(0));
-        } else return null;
+        }
+//        if (newValue.startsWith("+")){
+//
+//        }
+        else return null;
         for (int i = 1; i < newValue.length(); i++) {
             if (Character.isDigit(newValue.charAt(i))) {
                 str = str.append(newValue.charAt(i));
@@ -63,7 +70,8 @@ public class ExtendedInteger {
 
         } else if (value.startsWith("-")) {
             intValue = intValue * (-1);
-        } else return null;
+        } else if(value.startsWith("+")) {}
+        else return null;
         ExtendedInteger newInt = new ExtendedInteger(intValue);
         return newInt;
     }
@@ -100,6 +108,18 @@ public class ExtendedInteger {
         if (!((obj) instanceof ExtendedInteger)) return false;
         return ((ExtendedInteger) obj).getValue() == this.value;
 
+    }
+
+    @Override
+    public String toString() {
+        return "ExtendedInteger{" +
+                "value=" + value +
+                '}';
+    }
+
+    public static void main(String[] args) {
+char [] arr = {1,2,3};
+        System.out.println((parseInt(arr)));
     }
 
 
