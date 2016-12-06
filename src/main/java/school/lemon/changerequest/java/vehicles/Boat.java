@@ -1,28 +1,22 @@
 package school.lemon.changerequest.java.vehicles;
 
-import java.util.Objects;
+public class Boat extends Default implements IBoat {
 
-public class Boat implements IBoat {
-    private int manufacturedYears;
-    private String make;
-    private String model;
     private boolean motorized;
 
-    Boat(int manufacturedYears, String make, String model, boolean motorized) {
-        this.manufacturedYears = manufacturedYears;
-        this.make = make;
-        this.model = model;
+    Boat(int manufacturedYear, String make, String model, boolean motorized) {
+        super(manufacturedYear, make, model);
         this.motorized = motorized;
     }
 
     @Override
     public int getManufacturedYear() {
-        return this.manufacturedYears;
+        return this.manufacturedYear;
     }
 
     @Override
     public void setManufacturedYear(int year) {
-        this.manufacturedYears = year;
+        this.manufacturedYear = year;
     }
 
     @Override
@@ -79,7 +73,14 @@ public class Boat implements IBoat {
 
     @Override
     public boolean equals(Object obj) {
-        return obj instanceof Boat && Objects.equals(this.toString(), obj.toString());
+        if (obj == null)
+            return false;
+        if (!(obj instanceof Boat))
+            return false;
+        Boat bobj = (Boat) obj;
+        if (this.motorized != bobj.motorized)
+            return false;
+        return false;
     }
 
     public int compareTo(Object obj) {

@@ -35,13 +35,10 @@ public class ExtendedInteger {
 
     public static ExtendedInteger parseInt(String value) {
         if (("").equals(value)) return null;
-        StringBuilder sb = new StringBuilder();
-        if (Character.isDigit(value.charAt(0)) || value.startsWith("-"))
-            sb = sb.append(value.charAt(0));
         for (int i = 1; i < value.length(); i++) {
-            if (Character.isDigit(value.charAt(i))) {
-                sb = sb.append(value.charAt(i));
-            } else return null;
+            if (!(Character.isDigit(value.charAt(i)))) {
+                return null;
+            }
         }
         return new ExtendedInteger(new Integer(value));
     }
