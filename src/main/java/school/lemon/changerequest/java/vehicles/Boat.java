@@ -75,10 +75,12 @@ public class Boat extends Default implements IBoat {
     public boolean equals(Object obj) {
         if (obj == null)
             return false;
+        if (this == obj)
+            return true;
         if (!(obj instanceof Boat))
             return false;
         Boat bobj = (Boat) obj;
-        if (this.motorized != bobj.motorized)
+        if (!(bobj.motorized))
             return false;
         return false;
     }
