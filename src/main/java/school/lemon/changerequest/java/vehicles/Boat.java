@@ -79,9 +79,8 @@ public class Boat extends Default implements IBoat {
             return true;
         if (!(obj instanceof Boat))
             return false;
-        Boat bobj = (Boat) obj;
-        if (!(bobj.motorized))
-            return false;
+        if (this.motorized == ((Boat) obj).motorized)
+            return true;
         return false;
     }
 
