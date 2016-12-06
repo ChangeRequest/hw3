@@ -1,7 +1,6 @@
 package school.lemon.changerequest.java.container;
 
 public class ContainerImpl implements Container {
-
     private int size;
     private int[] array;
 
