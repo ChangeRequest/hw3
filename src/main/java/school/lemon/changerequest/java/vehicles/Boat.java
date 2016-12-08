@@ -1,42 +1,13 @@
 package school.lemon.changerequest.java.vehicles;
 
-public class Boat extends Default implements IBoat {
+public abstract class Boat extends Vehicle implements IBoat {
 
     private boolean motorized;
 
+    //пишет, что нужно package-private
     Boat(int manufacturedYear, String make, String model, boolean motorized) {
         super(manufacturedYear, make, model);
         this.motorized = motorized;
-    }
-
-    @Override
-    public int getManufacturedYear() {
-        return this.manufacturedYear;
-    }
-
-    @Override
-    public void setManufacturedYear(int year) {
-        this.manufacturedYear = year;
-    }
-
-    @Override
-    public String getMake() {
-        return this.make;
-    }
-
-    @Override
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    @Override
-    public String getModel() {
-        return this.model;
-    }
-
-    @Override
-    public void setModel(String model) {
-        this.model = model;
     }
 
     @Override
@@ -67,26 +38,13 @@ public class Boat extends Default implements IBoat {
     @Override
     public String toString() {
         if (this.motorized)
-            return "This boat is a " + this.getManufacturedYear() + " " + this.getMake() + " " + this.getModel() + " (with motor).";
-        return "This boat is a " + this.getManufacturedYear() + " " + this.getMake() + " " + this.getModel() + ".";
+            return String.format("This boat is a %1$s %2$s %3$s (with motor).", this.getManufacturedYear(), this.getMake(), this.getModel());
+        return String.format("This boat is a %1$s %2$s %3$s.", this.getManufacturedYear(), this.getMake(), this.getModel());
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null)
-            return false;
-        if (this == obj)
-            return true;
-        if (!(obj instanceof Boat))
-            return false;
-        if (this.motorized == ((Boat) obj).motorized)
-            return true;
-        return false;
-    }
-
-    public int compareTo(Object obj) {
-        return obj.toString().compareTo(this.toString());
-
+        return obj != null && (this == obj || obj instanceof Boat && this.motorized == ((Boat) obj).motorized);
     }
 
 }

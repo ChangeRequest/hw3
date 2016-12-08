@@ -1,6 +1,6 @@
 package school.lemon.changerequest.java.vehicles;
 
-public class Car extends Default implements ICar {
+public abstract class Car extends Vehicle implements ICar {
 
     private int horespower;
 
@@ -21,36 +21,6 @@ public class Car extends Default implements ICar {
     }
 
     @Override
-    public int getManufacturedYear() {
-        return this.manufacturedYear;
-    }
-
-    @Override
-    public void setManufacturedYear(int year) {
-        this.manufacturedYear = year;
-    }
-
-    @Override
-    public String getMake() {
-        return this.make;
-    }
-
-    @Override
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    @Override
-    public String getModel() {
-        return this.model;
-    }
-
-    @Override
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    @Override
     public String accelerate() {
         return "fire pistons, turn wheels";
     }
@@ -66,7 +36,7 @@ public class Car extends Default implements ICar {
     }
 
     public String toString() {
-        return "This car is a " + this.getManufacturedYear() + " " + this.getMake() + " " + this.getModel() + " with " + this.getHorsepower() + " hp.";
+        return String.format("This car is a %1$s %2$s %3$s with %4$s hp.", this.getManufacturedYear(), this.getMake(), this.getModel(), this.getHorsepower());
     }
 
     public boolean equals(Object obj) {

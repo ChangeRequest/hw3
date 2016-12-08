@@ -21,7 +21,7 @@ public class ExtendedInteger {
             return true;
         if (value < 2 || value % 2 == 0)
             return false;
-        for (int i = 2; i * i <= value; i++) {
+        for (int i = 3; i * i <= value; i++) {
             if (value % i == 0)
                 return false;
         }
@@ -34,7 +34,7 @@ public class ExtendedInteger {
     }
 
     public static ExtendedInteger parseInt(String value) {
-        if (("").equals(value)) return null;
+        if (("").equals(value) || value == null) return null;
         for (int i = 1; i < value.length(); i++) {
             if (!(Character.isDigit(value.charAt(i)))) {
                 return null;
