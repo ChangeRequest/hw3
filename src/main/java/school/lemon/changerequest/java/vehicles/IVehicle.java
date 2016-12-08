@@ -4,36 +4,42 @@ public interface IVehicle extends Steerable {
 
     /**
      * Get vehicle manufactured year
+     *
      * @return manufactured year
      */
     int getManufacturedYear();
 
     /**
      * Set vehicle manufactured year
+     *
      * @param year manufactured year
      */
     void setManufacturedYear(int year);
 
     /**
      * Get vehicle manufacturer
+     *
      * @return manufacturer
      */
     String getMake();
 
     /**
      * Set vehicle manufactured year
+     *
      * @param make manufacturer
      */
     void setMake(String make);
 
     /**
      * Get vehicle model
+     *
      * @return vehicle model
      */
     String getModel();
 
     /**
      * Set vehicle model
+     *
      * @param model of vehicle
      */
     void setModel(String model);
