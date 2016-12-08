@@ -73,10 +73,13 @@ public class ExtendedInteger {
         if (value == null || value.length() == 0) {
             return null;
         }
+
         StringBuilder sb = new StringBuilder();
+
         if (Character.isDigit(value.charAt(0)) || value.startsWith("-")) {
             sb = sb.append(value.charAt(0));
         }
+
         for (int i = 1; i<value.length(); i++) {
             if (Character.isDigit(value.charAt(i))) {
                 sb = sb.append(value.charAt(i));
