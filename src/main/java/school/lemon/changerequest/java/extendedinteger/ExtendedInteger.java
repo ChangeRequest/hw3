@@ -64,7 +64,6 @@ public class ExtendedInteger {
      */
     public static ExtendedInteger parseInt(char[] value) {
 
-
         int result = 0;
         int resultSum = 0;
         int j = 0;
