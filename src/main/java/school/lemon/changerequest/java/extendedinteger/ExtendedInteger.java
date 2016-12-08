@@ -4,9 +4,11 @@ package school.lemon.changerequest.java.extendedinteger;
  * Integer representation with some additional features
  */
 public class ExtendedInteger {
+    private int value;
 
     public ExtendedInteger(int value) {
-        //TODO: implement me
+
+        this.value = value;
     }
 
     /**
@@ -15,8 +17,7 @@ public class ExtendedInteger {
      * @return true if value is even, false - otherwise
      */
     public static boolean isEven(int value) {
-        //TODO: implement me
-        return false;
+        return value%2 == 0;
     }
 
     /**
@@ -25,8 +26,8 @@ public class ExtendedInteger {
      * @return true if value is odd, false - otherwise
      */
     public static boolean isOdd(int value) {
-        //TODO: implement me
-        return false;
+
+        return value%2 != 0;
     }
 
     /**
@@ -35,8 +36,15 @@ public class ExtendedInteger {
      * @return true if value is prime, false - otherwise
      */
     public static boolean isPrime(int value) {
-        //TODO: implement me
-        return false;
+
+        if (value == 1) {
+            return false;
+        }
+        for (int d = 2; d*d<value; d++){
+            if (value%d == 0)
+                return false;
+        }
+        return true;
     }
 
     /**
@@ -46,8 +54,12 @@ public class ExtendedInteger {
      * null in case specified value is null or the value does not contain a parsable integer
      */
     public static ExtendedInteger parseInt(char[] value) {
-        //TODO: implement me
-        return null;
+
+        if (value == null || value.length == 0) {
+            return null;
+        }
+        String newValue = new String(value);
+        return ExtendedInteger.parseInt(newValue);
     }
 
     /**
@@ -57,8 +69,22 @@ public class ExtendedInteger {
      * null in case specified value is null or the value does not contain a parsable integer
      */
     public static ExtendedInteger parseInt(String value) {
-        //TODO: implement me
-        return null;
+
+        if (value == null || value.length() == 0) {
+            return null;
+        }
+        StringBuilder sb = new StringBuilder();
+        if (Character.isDigit(value.charAt(0)) || value.startsWith("-")) {
+            sb = sb.append(value.charAt(0));
+        }
+        for (int i = 1; i<value.length(); i++) {
+            if (Character.isDigit(value.charAt(i))) {
+                sb = sb.append(value.charAt(i));
+            }
+            else return null;
+        }
+        return new ExtendedInteger (new Integer(value));
+
     }
 
     /**
@@ -66,8 +92,8 @@ public class ExtendedInteger {
      * @return int representation
      */
     public int getValue() {
-        //TODO: implement me
-        return 0;
+
+        return this.value;
     }
 
     /**
@@ -75,8 +101,8 @@ public class ExtendedInteger {
      * @return true if value is even, false - otherwise
      */
     public boolean isEven() {
-        //TODO: implement me
-        return false;
+
+        return isEven(this.value);
     }
 
     /**
@@ -84,8 +110,8 @@ public class ExtendedInteger {
      * @return true if value is odd, false - otherwise
      */
     public boolean isOdd() {
-        //TODO: implement me
-        return false;
+
+        return isOdd(this.value);
     }
 
     /**
@@ -93,27 +119,34 @@ public class ExtendedInteger {
      * @return true if value is prime, false - otherwise
      */
     public boolean isPrime() {
-        //TODO: implement me
-        return false;
+
+        return isPrime(this.value);
     }
+
 
     /**
      * Check whether current {@code ExtendedInteger} is equal to specified int value
      * @return true if values are equal, false - otherwise
      */
     public boolean equals(int value) {
-        //TODO: implement me
-        return false;
+
+        return this.value == value;
+
     }
 
     /**
      * Check whether current {@code ExtendedInteger} is equal to specified object
      * @return true if values are equal, false - otherwise
      */
-    @Override
+
     public boolean equals(Object obj) {
-        //TODO: implement me
-        return false;
+
+        if (obj instanceof ExtendedInteger) {
+            ExtendedInteger extendedInteger =  (ExtendedInteger) obj;
+            return true;
+        }
+
+        else return false;
     }
 
 }
