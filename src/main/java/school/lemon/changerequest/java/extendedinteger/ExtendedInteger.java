@@ -160,6 +160,7 @@ public class ExtendedInteger {
      */
     @Override
     public boolean equals(Object obj) {
+
         if (obj == this)
             return true;
 
