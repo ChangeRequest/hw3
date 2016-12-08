@@ -16,13 +16,13 @@ public class ExtendedInteger {
     }
 
     public static boolean isOdd(int value) {
-        return (value % 2 != 0);
+        return !((value & 1) == 0);
     }
 
     public static boolean isPrime(int value) {
         if (value == 2) return true;
         if (value < 2 || value % 2 == 0) return false;
-        for (int i = 2; i < value; i++) {
+        for (int i = 3; i < value; i += 2) {
             if (value % i == 0) {
                 return false;
             }
@@ -49,7 +49,7 @@ public class ExtendedInteger {
 
 
     public static ExtendedInteger parseInt(String value) {
-        if (("").equals(value)) return null;
+        if ("".equals(value) || value == null) return null;
         int intValue = 0;
         int j = 0;
         for (int i = value.length() - 1; i > 0; i--) {

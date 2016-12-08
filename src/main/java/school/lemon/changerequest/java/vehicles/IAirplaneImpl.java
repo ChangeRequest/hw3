@@ -12,36 +12,36 @@ public class IAirplaneImpl extends Vehicle implements IAirplane {
         this.maximumHeightFeet = maximumHeightFeet;
     }
 
-    @Override
-    public int getManufacturedYear() {
-        return manufacturedYear;
-    }
-
-    @Override
-    public void setManufacturedYear(int year) {
-        this.manufacturedYear = year;
-
-    }
-
-    @Override
-    public String getMake() {
-        return make;
-    }
-
-    @Override
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    @Override
-    public String getModel() {
-        return model;
-    }
-
-    @Override
-    public void setModel(String model) {
-        this.model = model;
-    }
+//    @Override
+//    public int getManufacturedYear() {
+//        return manufacturedYear;
+//    }
+//
+//    @Override
+//    public void setManufacturedYear(int year) {
+//        this.manufacturedYear = year;
+//
+//    }
+//
+//    @Override
+//    public String getMake() {
+//        return make;
+//    }
+//
+//    @Override
+//    public void setMake(String make) {
+//        this.make = make;
+//    }
+//
+//    @Override
+//    public String getModel() {
+//        return model;
+//    }
+//
+//    @Override
+//    public void setModel(String model) {
+//        this.model = model;
+//    }
 
     @Override
     public int getMaximumHeightFeet() {
@@ -83,6 +83,6 @@ public class IAirplaneImpl extends Vehicle implements IAirplane {
 
     @Override
     public String toString() {
-        return String.format("This airplane is a %1$d %2$s %3$s that can reach %4$d feet.", manufacturedYear, make, model, maximumHeightFeet);
+        return String.format("This airplane is a %1$d %2$s %3$s that can reach %4$d feet.", getManufacturedYear(), getMake(), getModel(), getMaximumHeightFeet());
     }
 }

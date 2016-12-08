@@ -22,35 +22,35 @@ public class ICarImpl extends Vehicle implements ICar {
         this.horsepower = horsepower;
     }
 
-    @Override
-    public int getManufacturedYear() {
-        return manufacturedYear;
-    }
-
-    @Override
-    public void setManufacturedYear(int year) {
-        this.manufacturedYear = year;
-    }
-
-    @Override
-    public String getMake() {
-        return make;
-    }
-
-    @Override
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    @Override
-    public String getModel() {
-        return model;
-    }
-
-    @Override
-    public void setModel(String model) {
-        this.model = model;
-    }
+//    @Override
+//    public int getManufacturedYear() {
+//        return manufacturedYear;
+//    }
+//
+//    @Override
+//    public void setManufacturedYear(int year) {
+//        this.manufacturedYear = year;
+//    }
+//
+//    @Override
+//    public String getMake() {
+//        return make;
+//    }
+//
+//    @Override
+//    public void setMake(String make) {
+//        this.make = make;
+//    }
+//
+//    @Override
+//    public String getModel() {
+//        return model;
+//    }
+//
+//    @Override
+//    public void setModel(String model) {
+//        this.model = model;
+//    }
 
     @Override
     public String accelerate() {
@@ -78,6 +78,6 @@ public class ICarImpl extends Vehicle implements ICar {
 
     @Override
     public String toString() {
-        return String.format("This car is a %1$d %2$s %3$s with %4$d hp.", manufacturedYear, make, model, horsepower);
+        return String.format("This car is a %1$d %2$s %3$s with %4$d hp.", getManufacturedYear(), getMake(), getModel(), getHorsepower());
     }
 }

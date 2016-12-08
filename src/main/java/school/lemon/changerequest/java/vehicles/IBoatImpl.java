@@ -23,36 +23,36 @@ public class IBoatImpl extends Vehicle implements IBoat {
         this.motorized = motorized;
     }
 
-    @Override
-    public int getManufacturedYear() {
-        return manufacturedYear;
-    }
-
-    @Override
-    public void setManufacturedYear(int year) {
-        this.manufacturedYear = year;
-
-    }
-
-    @Override
-    public String getMake() {
-        return make;
-    }
-
-    @Override
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    @Override
-    public String getModel() {
-        return model;
-    }
-
-    @Override
-    public void setModel(String model) {
-        this.model = model;
-    }
+//    @Override
+//    public int getManufacturedYear() {
+//        return manufacturedYear;
+//    }
+//
+//    @Override
+//    public void setManufacturedYear(int year) {
+//        this.manufacturedYear = year;
+//
+//    }
+//
+//    @Override
+//    public String getMake() {
+//        return make;
+//    }
+//
+//    @Override
+//    public void setMake(String make) {
+//        this.make = make;
+//    }
+//
+//    @Override
+//    public String getModel() {
+//        return model;
+//    }
+//
+//    @Override
+//    public void setModel(String model) {
+//        this.model = model;
+//    }
 
     @Override
     public String accelerate() {
@@ -69,10 +69,10 @@ public class IBoatImpl extends Vehicle implements IBoat {
         return "turn tiller right";
     }
 
-    public String printismotorized() {
-        if (this.isMotorized()) return " (with motor).";
-        else return ".";
-    }
+//    private String printIsMotorized() {
+//        if (this.isMotorized()) return " (with motor).";
+//        else return ".";
+//    }
 
     @Override
     public boolean equals(Object obj) {
@@ -86,6 +86,6 @@ public class IBoatImpl extends Vehicle implements IBoat {
 
     @Override
     public String toString() {
-        return String.format("This boat is a %1$d %2$s %3$s%4$s", manufacturedYear, make, model, printismotorized());
+        return String.format("This boat is a %1$d %2$s %3$s%4$s", getManufacturedYear(), getMake(), getModel(), isMotorized() ? " (with motor)." : ".");
     }
 }
