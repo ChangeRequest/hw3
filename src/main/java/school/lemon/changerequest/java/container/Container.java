@@ -2,6 +2,7 @@ package school.lemon.changerequest.java.container;
 
 public interface Container {
 
+
     int INITIAL_ARRAY_SIZE = 10;
 
     /**
