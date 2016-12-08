@@ -64,6 +64,7 @@ public class ExtendedInteger {
      */
     public static ExtendedInteger parseInt(char[] value) {
 
+
         int result = 0;
         int resultSum = 0;
         int j = 0;
@@ -75,6 +76,8 @@ public class ExtendedInteger {
         }
         if (value[0] == '-') {
             first = -1;
+        } else if (value[0] == '+') {
+            k = 0;
         } else {
             k = -1;
         }
@@ -100,32 +103,9 @@ public class ExtendedInteger {
      * null in case specified value is null or the value does not contain a parsable integer
      */
     public static ExtendedInteger parseInt(String value) {
-        int first = 1;
-        int k = 0;
-        int resultSum = 0;
-        int result = 0;
-        int j = 0;
-        int lengthString = value.length();
-        if (lengthString == 0) {
-            return null;
-        }
-        if (value.charAt(0) == '-') {
-            first = -1;
-        } else {
-            k = -1;
-        }
-        for (int i = lengthString - 1; i != k; i--) {
-            if (Character.isDigit(value.charAt(i))) {
-                result = Character.getNumericValue(value.charAt(i));
-                result *= Math.pow(10, j++);
-            } else {
-                return null;
-            }
-            resultSum += result;
-        }
-        resultSum *= first;
-       ExtendedInteger resultInt = new ExtendedInteger(resultSum);
-        return resultInt;
+
+        char[] newChar = value.toCharArray();
+        return parseInt(newChar);
     }
 
     /**
@@ -181,17 +161,21 @@ public class ExtendedInteger {
      */
     @Override
     public boolean equals(Object obj) {
-        if (!((obj) instanceof ExtendedInteger)) {
+        if (obj == this)
+            return true;
+
+        if (obj == null)
             return false;
-        }
-        ExtendedInteger extendedInteger = (ExtendedInteger) obj;
-        if (obj == null) {
+
+        if (!(getClass() == obj.getClass()))
             return false;
+        else {
+            ExtendedInteger tmp = (ExtendedInteger) obj;
+            if (tmp.value == this.value)
+                return true;
+            else
+                return false;
         }
-        if ((extendedInteger.getValue()) <= 0) {
-            return false;
-        }
-        return true;
     }
 
 }
