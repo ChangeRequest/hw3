@@ -37,7 +37,8 @@ public class ExtendedInteger {
      */
     public static boolean isPrime(int value) {
 
-        if (value == 1) {
+        if (value == 2) return true;
+        if (value < 2 || value % 2 == 0) {
             return false;
         }
         for (int d = 2; d*d<value; d++){
@@ -70,25 +71,29 @@ public class ExtendedInteger {
      */
     public static ExtendedInteger parseInt(String value) {
 
-        if (value == null || value.length() == 0) {
+        if ((("").equals(value)) || value == null) {
             return null;
         }
-
-        StringBuilder sb = new StringBuilder();
-
-        if (Character.isDigit(value.charAt(0)) || value.startsWith("-")) {
-            sb = sb.append(value.charAt(0));
-        }
-
-        for (int i = 1; i<value.length(); i++) {
+        int val = 0;
+        int j = 0;
+        for (int i = value.length() - 1; i > 0; i--) {
             if (Character.isDigit(value.charAt(i))) {
-                sb = sb.append(value.charAt(i));
-            }
-            else return null;
+                val = val + Character.getNumericValue(value.charAt(i)) * (int) Math.pow(10.0, j);
+                j++;
+            } else return null;
         }
-        return new ExtendedInteger (new Integer(value));
+        if (Character.isDigit(value.charAt(0))) {
+            val = val + Character.getNumericValue(value.charAt(0)) * (int) Math.pow(10.0, j);
 
+        } else if (value.startsWith("-")) {
+            val = val * (-1);
+        } else if(value.startsWith("+")) {}
+        else return null;
+        ExtendedInteger newInt = new ExtendedInteger(val);
+        return newInt;
     }
+
+
 
     /**
      * Get int representation of {@code ExtendedInteger}
@@ -143,13 +148,11 @@ public class ExtendedInteger {
      */
 
     public boolean equals(Object obj) {
+        if (obj == null) return false;
 
-        if (obj instanceof ExtendedInteger) {
-            ExtendedInteger extendedInteger =  (ExtendedInteger) obj;
-            return true;
-        }
+        if (!(obj instanceof ExtendedInteger)) return false;
+            return ((ExtendedInteger) obj).getValue() == this.value;
 
-        else return false;
     }
 
 }

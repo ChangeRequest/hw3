@@ -3,7 +3,9 @@ package school.lemon.changerequest.java.vehicles;
 public final class VehicleFactory {
 
     private VehicleFactory() {
+
     }
+
 
     /**
      * Creates car
@@ -13,9 +15,12 @@ public final class VehicleFactory {
      * @param horsepower of car
      * @return instance of car
      */
+
+
     public static ICar createCar(int manufacturedYear, String make, String model, int horsepower) {
-        // TODO: please implement me
-        return null;
+
+        Car car = new Car(manufacturedYear, make, model, horsepower);
+        return car;
     }
 
     /**
@@ -27,8 +32,9 @@ public final class VehicleFactory {
      * @return instance of airplane
      */
     public static IAirplane createAirplane(int manufacturedYear, String make, String model, int maximumHeightFeet) {
-        // TODO: please implement me
-        return null;
+
+        Airplane airplane = new Airplane (maximumHeightFeet, manufacturedYear, make, model);
+        return airplane;
     }
 
     /**
@@ -40,8 +46,9 @@ public final class VehicleFactory {
      * @return instance of boat
      */
     public static IBoat createBoat(int manufacturedYear, String make, String model, boolean motorized) {
-        // TODO: please implement me
-        return null;
+
+        Boat boat = new Boat (manufacturedYear, make, model, motorized);
+        return boat;
     }
 
 }
