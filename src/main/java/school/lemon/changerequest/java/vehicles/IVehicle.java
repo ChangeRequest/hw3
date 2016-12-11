@@ -8,6 +8,7 @@ public interface IVehicle extends Steerable {
      */
     int getManufacturedYear();
 
+
     /**
      * Set vehicle manufactured year
      * @param year manufactured year
