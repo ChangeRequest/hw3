@@ -1,6 +1,6 @@
 package school.lemon.changerequest.java.vehicles;
 
-public abstract class Boat extends Vehicle implements IBoat {
+public class Boat extends Vehicle implements IBoat {
 
     private boolean motorized;
 

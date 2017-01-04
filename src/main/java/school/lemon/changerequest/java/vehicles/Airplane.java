@@ -1,6 +1,6 @@
 package school.lemon.changerequest.java.vehicles;
 
-public abstract class Airplane extends Vehicle implements IAirplane {
+public class Airplane extends Vehicle implements IAirplane {
 
     private int maximumHeightFeet;
 
@@ -41,9 +41,10 @@ public abstract class Airplane extends Vehicle implements IAirplane {
 
     @Override
     public boolean equals(Object obj) {
-    if (obj == null || !(obj instanceof Airplane)) return false;
+        if (obj == null || !(obj instanceof Airplane)) return false;
 
-    Airplane iAirplane = (Airplane) obj;
+        Airplane iAirplane = (Airplane) obj;
 
         return Math.abs(maximumHeightFeet - iAirplane.maximumHeightFeet) <= 1000;
-}}
+    }
+}

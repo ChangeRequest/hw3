@@ -1,6 +1,6 @@
 package school.lemon.changerequest.java.vehicles;
 
-public abstract class Car extends Vehicle implements ICar {
+public class Car extends Vehicle implements ICar {
 
     private int horsepower;
 
@@ -9,6 +9,7 @@ public abstract class Car extends Vehicle implements ICar {
         this.horsepower = horsepower;
 
     }
+
 
     @Override
     public int getHorsepower() {
