@@ -1,119 +1,163 @@
 package school.lemon.changerequest.java.extendedinteger;
 
+
 /**
  * Integer representation with some additional features
  */
 public class ExtendedInteger {
+    private int value;
 
     public ExtendedInteger(int value) {
-        //TODO: implement me
+        this.value = value;
     }
 
     /**
      * Check whether specified value is even
+     *
      * @param value to check
      * @return true if value is even, false - otherwise
      */
     public static boolean isEven(int value) {
-        //TODO: implement me
+        if (value % 2 == 0) {
+            return true;
+        }
         return false;
     }
 
     /**
      * Check whether specified value is odd
+     *
      * @param value to check
      * @return true if value is odd, false - otherwise
      */
     public static boolean isOdd(int value) {
-        //TODO: implement me
+        if (value % 2 != 0) {
+            return true;
+        }
         return false;
     }
 
     /**
      * Check whether specified value is prime
+     *
      * @param value to check
      * @return true if value is prime, false - otherwise
      */
     public static boolean isPrime(int value) {
-        //TODO: implement me
+        if (value > 1) {
+            for (int i = 2; i <= value/2; i++) {
+                if (value % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
         return false;
     }
 
     /**
      * Parse specified char array and create instance of {@code ExtendedInteger}
+     *
      * @param value to parse
      * @return instance of {@code ExtendedInteger} or
      * null in case specified value is null or the value does not contain a parsable integer
      */
     public static ExtendedInteger parseInt(char[] value) {
-        //TODO: implement me
+        if ( !(value.length == 0 || value == null) ) {
+            char firstChar = value[0];
+            boolean isNegative = false;
+            int result = 0;
+
+            if (firstChar == '-') {
+                isNegative = true;
+            } else if (firstChar == '+') {
+                isNegative = false;
+            } else if (Character.isDigit(firstChar)) {
+                result = Character.getNumericValue(value[0]);
+            } else return null;
+
+            for (int i = 1; i < value.length; i++) {
+                if (Character.isDigit(value[i])) {
+                    int prevInt = result;
+                    result = prevInt * 10 + Character.getNumericValue(value[i]);
+                } else return null;
+            }
+            return isNegative ? new ExtendedInteger(new Integer((-1)*result)):new ExtendedInteger(new Integer(result));
+        }
         return null;
     }
 
     /**
      * Parse specified string and create instance of {@code ExtendedInteger}
+     *
      * @param value to parse
      * @return instance of {@code ExtendedInteger} or
      * null in case specified value is null or the value does not contain a parsable integer
      */
     public static ExtendedInteger parseInt(String value) {
-        //TODO: implement me
-        return null;
+        return parseInt(value.toCharArray());
     }
 
     /**
      * Get int representation of {@code ExtendedInteger}
+     *
      * @return int representation
      */
     public int getValue() {
-        //TODO: implement me
-        return 0;
+        return value;
     }
 
     /**
      * Check whether current value is even
+     *
      * @return true if value is even, false - otherwise
      */
     public boolean isEven() {
-        //TODO: implement me
-        return false;
+        return isEven(value);
     }
 
     /**
      * Check whether current value is odd
+     *
      * @return true if value is odd, false - otherwise
      */
     public boolean isOdd() {
-        //TODO: implement me
-        return false;
+        return isOdd(value);
     }
 
     /**
      * Check whether current value is prime
+     *
      * @return true if value is prime, false - otherwise
      */
     public boolean isPrime() {
-        //TODO: implement me
-        return false;
+        return isPrime(value);
     }
 
     /**
      * Check whether current {@code ExtendedInteger} is equal to specified int value
+     *
      * @return true if values are equal, false - otherwise
      */
     public boolean equals(int value) {
-        //TODO: implement me
+        if (this.value == value) {
+            return true;
+        }
         return false;
     }
 
-    /**
-     * Check whether current {@code ExtendedInteger} is equal to specified object
-     * @return true if values are equal, false - otherwise
-     */
     @Override
-    public boolean equals(Object obj) {
-        //TODO: implement me
-        return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ExtendedInteger that = (ExtendedInteger) o;
+
+        return value == that.value;
     }
 
+    @Override
+    public int hashCode() {
+        return value;
+    }
 }
