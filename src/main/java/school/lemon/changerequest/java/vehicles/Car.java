@@ -4,6 +4,7 @@ package school.lemon.changerequest.java.vehicles;
  * Created by akliuieva on 29.06.17.
  */
 public class Car extends Vehicle implements ICar{
+    private int DEFAULT_VALUE_FOR_HASHCODE = 10; //is used to satisfy equals+hashCode contract
     private int horsepower;
 
     public Car(int manufacturedYear, String make, String model, int horsepower) {
@@ -14,7 +15,7 @@ public class Car extends Vehicle implements ICar{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Car)) return false;
 
         Car car = (Car) o;
 
@@ -28,7 +29,7 @@ public class Car extends Vehicle implements ICar{
 
     @Override
     public int hashCode() {
-        return horsepower;
+        return DEFAULT_VALUE_FOR_HASHCODE;
     }
 
     @Override

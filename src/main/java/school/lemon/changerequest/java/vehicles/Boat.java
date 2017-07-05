@@ -4,6 +4,7 @@ package school.lemon.changerequest.java.vehicles;
  * Created by akliuieva on 29.06.17.
  */
 public class Boat extends Vehicle implements IBoat{
+    private int DEFAULT_VALUE_FOR_HASHCODE = 11; //is used to satisfy equals+hashCode contract
     private boolean motorized;
 
     public Boat(int manufacturedYear, String make, String model, boolean motorized) {
@@ -19,7 +20,7 @@ public class Boat extends Vehicle implements IBoat{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Boat)) return false;
 
         Boat boat = (Boat) o;
 
@@ -37,12 +38,9 @@ public class Boat extends Vehicle implements IBoat{
     }
 
     @Override
-    public int hashCode() {
-        return (motorized ? 1 : 0);
-    }
+    public int hashCode() { return DEFAULT_VALUE_FOR_HASHCODE; }
 
     @Override
-
     public String steerLeft() {
         return "turn tiller left";
     }

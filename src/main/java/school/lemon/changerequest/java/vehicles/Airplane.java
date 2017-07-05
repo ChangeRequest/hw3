@@ -4,6 +4,7 @@ package school.lemon.changerequest.java.vehicles;
  * Created by akliuieva on 29.06.17.
  */
 public class Airplane extends Vehicle implements IAirplane{
+    private int DEFAULT_VALUE_FOR_HASHCODE = 12; //is used to satisfy equals+hashCode contract
     private int maximumHeightFeet;
 
     public Airplane(int manufacturedYear, String make, String model, int maximumHeightFeet) {
@@ -19,7 +20,7 @@ public class Airplane extends Vehicle implements IAirplane{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Airplane)) return false;
 
         Airplane airplane = (Airplane) o;
 
@@ -33,7 +34,7 @@ public class Airplane extends Vehicle implements IAirplane{
 
     @Override
     public int hashCode() {
-        return maximumHeightFeet;
+        return DEFAULT_VALUE_FOR_HASHCODE;
     }
 
     @Override

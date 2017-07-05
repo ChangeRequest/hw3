@@ -44,9 +44,8 @@ public class ExtendedInteger {
      * @return true if value is prime, false - otherwise
      */
     public static boolean isPrime(int value) {
-        int i;
         if (value > 1) {
-            for (i = 2; i <= value / 2; i++) {
+            for (int i = 2; i <= value/2; i++) {
                 if (value % i == 0) {
                     return false;
                 }
@@ -64,14 +63,15 @@ public class ExtendedInteger {
      * null in case specified value is null or the value does not contain a parsable integer
      */
     public static ExtendedInteger parseInt(char[] value) {
-        if (value.length != 0 && value != null) {
+        if ( !(value.length == 0 || value == null) ) {
             char firstChar = value[0];
-            int negative = 1;
+            boolean isNegative = false;
             int result = 0;
 
-            if (firstChar == "-".charAt(0)) {
-                negative = -1;
-            } else if (firstChar == "+".charAt(0)) {
+            if (firstChar == '-') {
+                isNegative = true;
+            } else if (firstChar == '+') {
+                isNegative = false;
             } else if (Character.isDigit(firstChar)) {
                 result = Character.getNumericValue(value[0]);
             } else return null;
@@ -82,7 +82,7 @@ public class ExtendedInteger {
                     result = prevInt * 10 + Character.getNumericValue(value[i]);
                 } else return null;
             }
-            return new ExtendedInteger(new Integer(negative*result));
+            return isNegative ? new ExtendedInteger(new Integer((-1)*result)):new ExtendedInteger(new Integer(result));
         }
         return null;
     }
