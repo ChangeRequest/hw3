@@ -5,8 +5,10 @@ package school.lemon.changerequest.java.extendedinteger;
  */
 public class ExtendedInteger {
 
+    private int value;
+
     public ExtendedInteger(int value) {
-        //TODO: implement me
+        this.value = value;
     }
 
     /**
@@ -15,8 +17,7 @@ public class ExtendedInteger {
      * @return true if value is even, false - otherwise
      */
     public static boolean isEven(int value) {
-        //TODO: implement me
-        return false;
+        return value % 2 == 0;
     }
 
     /**
@@ -25,8 +26,7 @@ public class ExtendedInteger {
      * @return true if value is odd, false - otherwise
      */
     public static boolean isOdd(int value) {
-        //TODO: implement me
-        return false;
+        return value % 2 != 0;
     }
 
     /**
@@ -35,8 +35,16 @@ public class ExtendedInteger {
      * @return true if value is prime, false - otherwise
      */
     public static boolean isPrime(int value) {
-        //TODO: implement me
-        return false;
+        if (value <= 1) {
+            return false;
+        } else {
+            for (int i = 2; i < value; i++) {
+                if (value % i == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     /**
@@ -46,8 +54,33 @@ public class ExtendedInteger {
      * null in case specified value is null or the value does not contain a parsable integer
      */
     public static ExtendedInteger parseInt(char[] value) {
-        //TODO: implement me
-        return null;
+        int parsedValue = 0;
+        int arrayLength = value.length;
+        int firstCharacter = 1;
+        int start = 0;
+
+        if(arrayLength == 0)
+            return null;
+
+        if(value[0] == '-')
+        {
+            firstCharacter = -1;
+            start = 1;
+        }
+
+        if(value[0] == '+')
+        {
+            start = 1;
+        }
+
+        for(int i = start; i != value.length; i++) {
+            if (Character.isDigit(value[i]))
+                parsedValue = parsedValue * 10 + Character.getNumericValue(value[i]);
+            else return null;
+        }
+
+        parsedValue *= firstCharacter;
+        return new ExtendedInteger(parsedValue);
     }
 
     /**
@@ -57,8 +90,11 @@ public class ExtendedInteger {
      * null in case specified value is null or the value does not contain a parsable integer
      */
     public static ExtendedInteger parseInt(String value) {
-        //TODO: implement me
-        return null;
+        if(value.isEmpty())
+        {
+            return null;
+        }
+        return ExtendedInteger.parseInt(value.toCharArray());
     }
 
     /**
@@ -66,8 +102,7 @@ public class ExtendedInteger {
      * @return int representation
      */
     public int getValue() {
-        //TODO: implement me
-        return 0;
+        return this.value;
     }
 
     /**
@@ -75,8 +110,7 @@ public class ExtendedInteger {
      * @return true if value is even, false - otherwise
      */
     public boolean isEven() {
-        //TODO: implement me
-        return false;
+        return isEven(this.value);
     }
 
     /**
@@ -84,8 +118,7 @@ public class ExtendedInteger {
      * @return true if value is odd, false - otherwise
      */
     public boolean isOdd() {
-        //TODO: implement me
-        return false;
+        return isOdd(this.value);
     }
 
     /**
@@ -93,8 +126,7 @@ public class ExtendedInteger {
      * @return true if value is prime, false - otherwise
      */
     public boolean isPrime() {
-        //TODO: implement me
-        return false;
+        return isPrime(this.value);
     }
 
     /**
@@ -102,8 +134,7 @@ public class ExtendedInteger {
      * @return true if values are equal, false - otherwise
      */
     public boolean equals(int value) {
-        //TODO: implement me
-        return false;
+        return this.getValue() == value;
     }
 
     /**
@@ -112,8 +143,17 @@ public class ExtendedInteger {
      */
     @Override
     public boolean equals(Object obj) {
-        //TODO: implement me
-        return false;
+        if(obj == null)
+            return false;
+
+        if(obj == this)
+            return true;
+
+        if(!(getClass() == obj.getClass()))
+            return false;
+
+        ExtendedInteger temp = (ExtendedInteger) obj;
+        return temp.value == this.value;
     }
 
 }
