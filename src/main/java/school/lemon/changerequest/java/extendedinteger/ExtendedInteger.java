@@ -128,7 +128,7 @@ public class ExtendedInteger {
         if (value == null || value.length == 0)
             return null;
 
-        Pattern p = Pattern.compile("^(-|\\+)?\\d+$");
+        Pattern p = Pattern.compile("^[+-]?\\d+$");
         Matcher m = p.matcher(new String(value));
         if (!m.matches())
             return null;
@@ -152,7 +152,7 @@ public class ExtendedInteger {
         if (value == null || value.length() == 0)
             return null;
 
-        Pattern p = Pattern.compile("^(-|\\+)?\\d+$");
+        Pattern p = Pattern.compile("^[+-]?\\d+$");
         Matcher m = p.matcher(value);
         if (!m.matches())
             return null;

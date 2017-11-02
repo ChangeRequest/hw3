@@ -27,9 +27,6 @@ public class ContainerImpl implements Container {
     public void add(int element) {
         if (containerSize == container.length) {
             Integer[] tmp = new Integer[containerSize * 2];
-
-            //for(int i = 0;i<containerSize;i++)
-            //   tmp[i] = container[i];
             System.arraycopy(container, 0, tmp, 0, containerSize);
             container = tmp;
         }
