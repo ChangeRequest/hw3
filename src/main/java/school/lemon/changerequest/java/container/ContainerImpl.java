@@ -2,7 +2,7 @@ package school.lemon.changerequest.java.container;
 
 public class ContainerImpl implements Container {
 
-    private Integer[] container = new Integer[INITIAL_ARRAY_SIZE];
+    private int[] container = new int[INITIAL_ARRAY_SIZE];
     private int containerSize = 0;
 
     @Override
@@ -17,7 +17,7 @@ public class ContainerImpl implements Container {
 
     @Override
     public Integer get(int index) {
-        if (index < 0 || index >= containerSize)
+        if (!isIndexCorrect(index))
             return null;
         else
             return container[index];
@@ -25,13 +25,7 @@ public class ContainerImpl implements Container {
 
     @Override
     public void add(int element) {
-        if (containerSize == container.length) {
-            Integer[] tmp = new Integer[containerSize * 2];
-            System.arraycopy(container, 0, tmp, 0, containerSize);
-            container = tmp;
-        }
-        container[containerSize] = element;
-        containerSize++;
+        add(element, containerSize);
     }
 
     @Override
@@ -39,7 +33,7 @@ public class ContainerImpl implements Container {
         if (index < 0 || index > containerSize)
             return false;
         if (containerSize == container.length) {
-            Integer[] tmp = new Integer[containerSize * 2];
+            int[] tmp = new int[containerSize * 2];
             System.arraycopy(container, 0, tmp, 0, index);
             tmp[index] = element;
             System.arraycopy(container, index, tmp, index + 1, containerSize - index);
@@ -56,10 +50,16 @@ public class ContainerImpl implements Container {
 
     @Override
     public boolean remove(int index) {
-        if (index < 0 || index >= containerSize)
+        if (!isIndexCorrect(index))
             return false;
         System.arraycopy(container, index + 1, container, index, containerSize - index - 1);
         containerSize--;
+        return true;
+    }
+
+    private boolean isIndexCorrect(int index) {
+        if (index < 0 || index >= containerSize)
+            return false;
         return true;
     }
 }

@@ -35,19 +35,17 @@ public class Boat extends Vehicle implements IBoat {
      * for airplanes: This airplane is a 1998 ABC Motors Comac that can reach 10000 feet.
      */
     public String toString() {
-        String result = String.format("This boat is a %d %s %s",
-                manufacturedYear, manufacturer, model);
+        StringBuffer result = new StringBuffer(String.format("This boat is a %d %s %s",
+                manufacturedYear, manufacturer, model));
         if (motorized)
-            result += " (with motor).";
+            result.append(" (with motor).");
         else
-            result += ".";
-        return result;
+            result.append(".");
+        return result.toString();
     }
 
     /**
-     * @return for cars: "fire pistons, turn wheels"
-     * for boats: "jet water"
-     * for airplanes: "fire engines on wings"
+     * @return for boats: "jet water"
      */
     public String accelerate() {
         String result = "jet water";
@@ -55,9 +53,7 @@ public class Boat extends Vehicle implements IBoat {
     }
 
     /**
-     * @return for cars: "turn wheels left"
-     * for boats: "turn tiller left"
-     * for airplanes: "lift wing flaps to turn left"
+     * @return for boats: "turn tiller left"
      */
     public String steerLeft() {
         String result = "turn tiller left";
@@ -65,9 +61,7 @@ public class Boat extends Vehicle implements IBoat {
     }
 
     /**
-     * @return for cars: "turn wheels right"
-     * for boats: "turn tiller right"
-     * for airplanes: "lift wing flaps to turn right"
+     * @return for boats: "turn tiller right"
      */
     public String steerRight() {
         String result = "turn tiller right";

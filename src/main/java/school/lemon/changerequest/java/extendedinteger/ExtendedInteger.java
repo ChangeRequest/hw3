@@ -1,5 +1,6 @@
 package school.lemon.changerequest.java.extendedinteger;
 
+import javax.naming.ldap.ExtendedRequest;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,8 +24,8 @@ public class ExtendedInteger {
      */
     public static boolean isEven(int value) {
 
-        boolean Even = ((value & 1) == 0);
-        return Even;
+        boolean result = ((value & 1) == 0);
+        return result;
     }
 
     /**
@@ -34,69 +35,8 @@ public class ExtendedInteger {
      * @return true if value is odd, false - otherwise
      */
     public static boolean isOdd(int value) {
-        boolean Odd = ((value & 1) == 1);
-        return Odd;
-    }
-
-    /**
-     * Binary method of exponentiation
-     *
-     * @param M   basis of degree
-     * @param Key exponent
-     * @param N   module
-     * @param C   result
-     */
-    private static void pow_mod(int M, int Key, int N, int[] C) {
-        if (Key == 0) {
-            C[0] = 1;
-            return;
-        }
-        if (Key == 1) {
-            C[0] = M;
-            return;
-        }
-        int i;
-        for (i = 31; i > 0; i--)
-            if (Key >>> i != 0) {
-                i--;
-                break;
-            }
-
-        long y = M;
-        for (; i >= 0; i--) {
-            y = (y * y) % N;
-            if (((Key >>> i) & 1) == 1)
-                y = (y * M) % N;
-        }
-        C[0] = (int) y;
-    }
-
-
-    /**
-     * Leman`s test of number for simplicity
-     *
-     * @param P tested value
-     * @param k number of itterations
-     */
-    private static boolean lemanTest(int P, int k) {
-        int T = P - 1;
-        int F = T >>> 1;
-        int a, count = 0;
-        int b[] = new int[1];
-
-        Random rnd = new Random(System.currentTimeMillis());
-
-        for (int i = 0; i < k; i++) {
-            a = 2 + rnd.nextInt(P - 2);
-            pow_mod(a, F, P, b);
-            if (b[0] == T)
-                count++;
-            else if (b[0] != 1)
-                return false;
-        }
-        if (count > 0)
-            return true;
-        return false;
+        boolean result = ((value & 1) == 1);
+        return result;
     }
 
     /**
@@ -108,12 +48,18 @@ public class ExtendedInteger {
     public static boolean isPrime(int value) {
 
         value = Math.abs(value);
-        if (value < 2)
+
+        if (value == 0 || value == 1)
             return false;
-        if (value == 2)
-            return true;
-        boolean IsPrime = lemanTest(value, 50);
-        return IsPrime;
+        if (value > 2 && value % 2 == 0)
+            return false;
+
+        int valueSqrt = (int) Math.sqrt(value);
+        for (int i = 3; i <= valueSqrt; i += 2)
+            if (value % i == 0)
+                return false;
+
+        return true;
     }
 
     /**
@@ -127,18 +73,23 @@ public class ExtendedInteger {
 
         if (value == null || value.length == 0)
             return null;
-
-        Pattern p = Pattern.compile("^[+-]?\\d+$");
-        Matcher m = p.matcher(new String(value));
-        if (!m.matches())
+        if (value.length == 0 && !Character.isDigit(value[0]))
             return null;
-        ExtendedInteger res = new ExtendedInteger(Integer.parseInt(new String(value)));
-        return res;
 
-
-        //  ExtendedInteger res = new ExtendedInteger(Integer.valueOf(new String(value)).intValue());
-        // ExtendedInteger res = new ExtendedInteger(Integer.parseInt(new String(value)));
-        //  return res;
+        ExtendedInteger result = new ExtendedInteger(0);
+        int coefficient = 1;
+        for (int i = value.length - 1; i > 0; i--, coefficient *= 10) {
+            if (!Character.isDigit(value[i]))
+                return null;
+            result.intValue += Character.digit(value[i], 10) * coefficient;
+        }
+        if (Character.isDigit(value[0]))
+            result.intValue += Character.digit(value[0], 10) * coefficient;
+        else if (value[0] == '-')
+            result.intValue *= -1;
+        else if (value[0] != '+')
+            return null;
+        return result;
     }
 
     /**
@@ -149,19 +100,7 @@ public class ExtendedInteger {
      * null in case specified value is null or the value does not contain a parsable integer
      */
     public static ExtendedInteger parseInt(String value) {
-        if (value == null || value.length() == 0)
-            return null;
-
-        Pattern p = Pattern.compile("^[+-]?\\d+$");
-        Matcher m = p.matcher(value);
-        if (!m.matches())
-            return null;
-        ExtendedInteger res = new ExtendedInteger(Integer.parseInt(value));
-        return res;
-
-        //  ExtendedInteger res = new ExtendedInteger(Integer.valueOf(value).intValue());
-        // ExtendedInteger res = new ExtendedInteger(Integer.parseInt(value));
-        //return res;
+        return parseInt(value.toCharArray());
     }
 
     /**
@@ -230,13 +169,8 @@ public class ExtendedInteger {
 
         if (!(getClass() == obj.getClass()))
             return false;
-        else {
-            ExtendedInteger tmp = (ExtendedInteger) obj;
-            if (tmp.intValue == this.intValue)
-                return true;
-            else
-                return false;
-        }
+
+        return equals(((ExtendedInteger) obj).intValue);
     }
 
 }

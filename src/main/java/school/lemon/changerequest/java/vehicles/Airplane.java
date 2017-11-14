@@ -40,9 +40,7 @@ public class Airplane extends Vehicle implements IAirplane {
     }
 
     /**
-     * @return for cars: "fire pistons, turn wheels"
-     * for boats: "jet water"
-     * for airplanes: "fire engines on wings"
+     * @return for airplanes: "fire engines on wings"
      */
     public String accelerate() {
         String result = "fire engines on wings";
@@ -50,9 +48,7 @@ public class Airplane extends Vehicle implements IAirplane {
     }
 
     /**
-     * @return for cars: "turn wheels left"
-     * for boats: "turn tiller left"
-     * for airplanes: "lift wing flaps to turn left"
+     * @return for airplanes: "lift wing flaps to turn left"
      */
     public String steerLeft() {
         String result = "lift wing flaps to turn left";
@@ -60,9 +56,7 @@ public class Airplane extends Vehicle implements IAirplane {
     }
 
     /**
-     * @return for cars: "turn wheels right"
-     * for boats: "turn tiller right"
-     * for airplanes: "lift wing flaps to turn right"
+     * @return for airplanes: "lift wing flaps to turn right"
      */
     public String steerRight() {
         String result = "lift wing flaps to turn right";
