@@ -35,8 +35,8 @@ public class Boat extends Vehicle implements IBoat {
      * for airplanes: This airplane is a 1998 ABC Motors Comac that can reach 10000 feet.
      */
     public String toString() {
-        StringBuffer result = new StringBuffer(String.format("This boat is a %d %s %s",
-                manufacturedYear, manufacturer, model));
+        StringBuilder result = new StringBuilder("This boat is a ").append(manufacturedYear).append(' ').
+                append(manufacturer).append(' ').append(model);
         if (motorized)
             result.append(" (with motor).");
         else

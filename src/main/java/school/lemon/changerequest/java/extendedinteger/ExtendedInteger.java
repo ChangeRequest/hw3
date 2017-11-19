@@ -1,10 +1,5 @@
 package school.lemon.changerequest.java.extendedinteger;
 
-import javax.naming.ldap.ExtendedRequest;
-import java.util.Random;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * Integer representation with some additional features
  */
@@ -35,8 +30,7 @@ public class ExtendedInteger {
      * @return true if value is odd, false - otherwise
      */
     public static boolean isOdd(int value) {
-        boolean result = ((value & 1) == 1);
-        return result;
+        return !isEven(value);
     }
 
     /**
